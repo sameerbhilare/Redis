@@ -6,7 +6,7 @@ export const getSession = async (id: string) => {
 	const session = await client.hGetAll(sessionsKey(id));
 
 	// redis HGETALL return empty object if given hash does not exist.
-	if (Object.keys.length === 0) {
+	if (Object.keys(session).length === 0) {
 		return null;
 	}
 	return deserialize(id, session);
