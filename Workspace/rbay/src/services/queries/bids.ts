@@ -10,6 +10,7 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 };
 
 export const getBidHistory = async (itemId: string, offset = 0, count = 10): Promise<Bid[]> => {
+	// range calculation
 	const startIndex = -1 * offset - count;
 	const endIndex = -1 - offset;
 
