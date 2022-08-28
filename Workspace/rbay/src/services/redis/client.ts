@@ -48,11 +48,11 @@ const client = createClient({
 });
 
 // testing above custom function
-client.on('connect', async () => {
-	await client.addOneAndStore('books:count', 5);
-	const result = await client.get('books:count');
-	console.log(result);
-});
+// client.on('connect', async () => {
+// 	await client.addOneAndStore('books:count', 5);
+// 	const result = await client.get('books:count');
+// 	console.log(result);
+// });
 
 client.on('error', (err) => console.error(err));
 client.connect();
