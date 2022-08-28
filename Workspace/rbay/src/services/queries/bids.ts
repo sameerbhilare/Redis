@@ -32,6 +32,10 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 				price: attrs.amount,
 				highestBidUserId: attrs.userId
 			})
+			.zAdd(itemsByPriceKey(), {
+				value: item.id,
+				score: attrs.amount
+			})
 			.exec(); // 3. EXEC
 	});
 };
