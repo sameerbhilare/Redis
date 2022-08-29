@@ -37,7 +37,8 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 		]);
 	});
 
-	// old implementation using watch... (imperfect solution)
+	// old transaction based implementation using watch... (imperfect solution)
+	/*
 	return client.executeIsolated(async (isolatedClient) => {
 		await isolatedClient.watch(itemsKey(attrs.itemId));
 
@@ -68,7 +69,7 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 				score: attrs.amount
 			})
 			.exec();
-	});
+	}); */
 };
 
 export const getBidHistory = async (itemId: string, offset = 0, count = 10): Promise<Bid[]> => {
