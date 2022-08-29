@@ -3,6 +3,15 @@ import { client } from './client';
 import { itemsIndexKey, itemsKey } from '$services/keys';
 
 export const createIndexes = async () => {
+	// find existing indexes
+	const indexes = await client.ft._list();
+	const exists = indexes.find((index) => index === itemsIndexKey());
+
+	// do not create index if already exists
+	if (exists) {
+		return;
+	}
+
 	return client.ft.create(
 		itemsIndexKey(),
 		{
