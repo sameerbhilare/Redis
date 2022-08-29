@@ -33,7 +33,9 @@ export const itemsByUser = async (userId: string, opts: QueryOpts) => {
 	console.log(total, documents);
 
 	return {
-		totalPages: 0,
-		items: []
+		totalPages: Math.ceil(total / opts.perPage),
+		items: documents.map(({ id, value }) => {
+			return deserialize(id.replace('items#', ''), value as any);
+		})
 	};
 };
